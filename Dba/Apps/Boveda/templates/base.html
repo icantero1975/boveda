@@ -1,0 +1,115 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+ {% block extrahead %}
+ {% endblock %}
+
+
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <title>{% block title %} Document {% endblock %} </title>
+
+</head>
+
+
+<body>
+
+
+ <div class="container">
+
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="bs-docs-section clearfix">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                 <nav class="navbar navbar-default">
+                     <div class="container-fluid">
+                        <div class="navbar-header">
+                          <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+                        </div>
+                         <div class="collapse navbar-collapse" id="navbarColor02">
+                         <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Autoridades <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                               <li><a href="{% url 'autoridad_alta' %}">Registrar</a></li>
+                               <li><a href="{% url 'autoridad_listar' %}">Listar</a></li>
+                              </ul>
+                            </li>
+                             <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Expedientes <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                               <li><a href="{% url 'expediente_alta' %}">Registrar</a></li>
+                               <li><a href="{% url 'expediente_listar' %}">Listar</a></li>
+                              </ul>
+                            </li>
+                             <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ingresos<span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                                 <li><a href="{% url 'indicio_alta' %}">Registrar</a></li>
+                                 <li><a href="{% url 'indicio_listar' %}">Listar</a></li>
+                                 <li><a href="{% url 'buscar_carpeta' %}">Buscar Por Rue</a></li>
+                              </ul>
+                             </li>
+                             <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Salidas<span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                                 <li><a href="{% url 'def_alta' %}">Definitiva</a></li>
+                                 <li><a href="{% url 'tem_alta' %}">Temporal</a></li>
+                                 <li><a href="{% url 'tras_alta' %}">Traslado</a></li>
+                                 <li><a href="{% url 'def_listar' %}">Listar Definitivas</a></li>
+                                 <li><a href="{% url 'tem_listar' %}">Listar Temporales</a></li>
+                                  <li><a href="{% url 'tras_listar' %}">Listar Traslados</a></li>
+                              </ul>
+                             </li>
+                         </ul>
+                         <ul class="nav navbar-nav navbar-right">
+                             <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Salir<span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li><a href="{% url 'logout'%}">Cerrar Sistema</a></li>
+                              </ul>
+                            </li>
+                         </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+              </div>
+          </div>
+      </div>
+    </nav>
+   {% endblock %}
+
+</div>
+
+{% block header %}
+ {% endblock %}
+
+ {% block content %}
+ <div class="well well-sm">
+  Esté es el contenido del archivo base.
+ </div>
+ {% endblock %}
+
+
+
+ {% block footer %}
+     <div align="center">
+ {% endblock %}
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+ {% block extrajs %}
+ {% endblock %}
+
+</div>
+</body>
+</html>

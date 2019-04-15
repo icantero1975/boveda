@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+{% block title %}
+	{% trans "Indicios" %}
+{% endblock title %}
+
+{% block content %}
+<h3 align="center">
+	{% trans "Indicios de la Carpeta: " %}
+	{% if carpeta %}
+		{{ carpeta }}
+	{% else %}
+		{% trans "todas las carpetas" %}
+	{% endif %}
+</h3>
+<div class="row">
+	<form method="POST">
+		{% csrf_token %}
+		<div class="col-md-3">{{ form.carpeta }}</div>
+		<div class="col-md-3">
+			<button type="submit" class="btn btn-default">{% trans "Submit" %}</button>
+		</div>
+		<div class="col-md-6">
+			<button type="submit" class="btn btn-default pull-right m-left-5" name="pdf">{% trans "PDF Report" %}</button>
+			<button type="submit" class="btn btn-default pull-right" name="excel">{% trans "Excel Report" %}</button>
+		</div>
+	</form>
+</div>
+
+<table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center"># Ingreso</th>
+                    <th class="text-center"># Indicio</th>
+                    <th class="text-center">Rue</th>
+                    <th class="text-center">Tipo Indicio</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Clasificación</th>
+                    <th class="text-center">Fecha de Caducidad</th>
+                    <th class="text-center">Peso</th>
+                    <th class="text-center">Dictamen</th>
+                    <th class="text-center">Depósito</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Con Cadena</th>
+                    <th class="text-center">Tipo Embalaje</th>
+                    <th class="text-center">Estado Embalaje</th>
+                    <th class="text-center">Ubicación</th>
+                    <th class="text-center">Url Imagen</th>
+                    <th class="text-center">Observaciones</th>
+                    <th class="text-center">Acciones</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+            {% if todosindicios  %}
+                {% for indicio in todosindicios %}
+                <tr>
+                    <td class="text-center">{{ indicio.id }}</td>
+                    <td class="text-center">{{ indicio.Ingreso_Num }} </td>
+                    <td class="text-center">{{ indicio.No_Indicio}}</td>
+                    <td class="text-center">{{ indicio.Rue}}</td>
+                    {% if indicio.Tipo == 'F' %}
+                    <td class="text-center">FISICO</td>
+                    {% endif %}
+                    {% if indicio.Tipo == 'B' %}
+                    <td class="text-center">BIOLOGICO</td>
+                    {% endif %}
+                    {% if indicio.Tipo == 'O' %}
+                    <td class="text-center">ORGANICO</td>
+                    {% endif %}
+                    {% if indicio.Tipo == 'FO' %}
+                    <td class="text-center">FISICO/ORGANICO</td>
+                    {% endif %}
+                    <td>{{ indicio.Descripcion}}</td>
+                    {% if indicio.Clasificacion == 'EB' %}
+                        <td>ELEMENTO BALISTICO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'PP' %}
+                        <td>PISTOLA DE PLASTICO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EL' %}
+                        <td>LCD</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'DC' %}
+                        <td>DOCUMENTO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'MA' %}
+                        <td>MEDIO DE ALMACENAMIENTO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'M' %}
+                        <td>MEDICAMENTO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'AC' %}
+                        <td>ARMA DE FUEGO CORTA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'AF' %}
+                        <td>ARMA DE FUEGO LARGA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'AB' %}
+                        <td>ARMA BLANCA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EM' %}
+                        <td>MARIHUANA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EC' %}
+                        <td>COCAINA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EA' %}
+                        <td>ANFETAMINA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EL' %}
+                        <td>CRISTAL</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'T' %}
+                        <td>CIGARROS</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'AL' %}
+                        <td>ALCOHOL</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'P' %}
+                        <td>PERECEDERO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'E' %}
+                        <td>ELECTRONICO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'AP' %}
+                        <td>AUTOPARTES</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'H' %}
+                        <td>HERRAMIENTAS</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'AR' %}
+                        <td>ART BELLEZA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'J' %}
+                        <td>JOYERIA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'R' %}
+                        <td>ROPA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'N' %}
+                        <td>NUMERARIO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'O' %}
+                        <td>OTRO</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'P' %}
+                        <td>{{ indicio.Fecha_Caducidad}}</td>
+                    {%else%}
+                        <td>NO APLICA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EM' or indicio.Clasificacion == 'EC' or indicio.Clasificacion == 'EH' or indicio.Clasificacion == 'EA' or indicio.Clasificacion == 'ER' or indicio.Clasificacion == 'EL'%}
+                    <td>{{ indicio.Peso_Narcotico}}</td>
+                        {% else %}
+                        <td>NO APLICA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'EM' or indicio.Clasificacion == 'EC' or indicio.Clasificacion == 'EH' or indicio.Clasificacion == 'EA' or indicio.Clasificacion == 'EL' or indicio.Clasificacion == 'AC' or indicio.Clasificacion == 'AL'%}
+                    <td>{{ indicio.Dictamen}}</td>
+                        {% else %}
+                        <td>NO APLICA</td>
+                    {% endif %}
+                    {% if indicio.Clasificacion == 'N' %}
+
+                        {% if indicio.Deposito_Banco == 'S' %}
+                            <td>SI</td>
+                        {% else %}
+                            <td>NO</td>
+                        {% endif %}
+                    {% else %}
+                        <td class="text-center">NO APLICA</td>
+                    {% endif %}
+
+                    {% if indicio.Clasificacion == 'N' %}
+                        <td>{{ indicio.Cantidad}}</td>
+                    {% else %}
+                       <td>NO APLICA</td>
+                    {% endif %}
+
+                    {% if indicio.Cadena == 'S' %}
+                        <td>SI</td>
+                        {% else %}
+                        <td>NO</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'B' %}
+                        <td>BOLSA DE PLASTICO</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'BP' %}
+                        <td>BOLSA DE PAPEL</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'SB' %}
+                        <td>SOBRE BLANCO</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'SM' %}
+                        <td>SOBRE MANILA</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'EM' %}
+                        <td>EMPLAYADO</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'CJ' %}
+                        <td>CAJA DE CARTON</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'SE' %}
+                        <td>SIN EMBALAJE</td>
+                    {% endif %}
+                    {% if indicio.Embalaje == 'O' %}
+                        <td>OTRO</td>
+                    {% endif %}
+                    {% if indicio.Estado_embalaje == 'C' %}
+                        <td>CERRADO</td>
+                    {% endif %}
+                    {% if indicio.Estado_embalaje == 'A' %}
+                        <td>ABIERTO</td>
+                    {% endif %}
+                    {% if indicio.Estado_embalaje == 'AL' %}
+                        <td>ALTERADO</td>
+                    {% endif %}
+                    {% if indicio.Estado_embalaje == 'R' %}
+                        <td>ROTO</td>
+                    {% endif %}
+                    {% if indicio.Estado_embalaje == 'O' %}
+                        <td>OTRO</td>
+                    {% endif %}
+                    <td>{{ indicio.Ubicacion}}</td>
+                    <td>{{ indicio.Imagen}}</td>
+                    <td>{{ indicio.Observaciones}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'indicio_editar' indicio.id %}">Editar</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No hay Indicios registrados</h1>
+            {% endif %}
+
+            </tbody>
+    </table>
+
+
+{% endblock %}
+

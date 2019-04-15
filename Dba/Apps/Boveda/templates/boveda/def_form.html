@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h3 align="center">SALIDAS DEFINITIVAS</h3>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Carpeta.name}}">{{form.Carpeta.label}}</label>
+				{{form.Carpeta}}
+			</div>
+		</div>
+
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Rue.name}}">{{form.Rue.label}}</label>
+				{{form.Rue}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Fecha_de_Movimiento.name}}">{{form.Fecha_de_Movimiento.label}}</label>
+				{{form.Fecha_de_Movimiento}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Autoridad.name}}">{{form.Autoridad.label}}</label>
+				{{form.Autoridad}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Persona_Recibe.name}}">{{form.Persona_Recibe.label}}</label>
+				{{form.Persona_Recibe}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Oficio.name}}">{{form.Oficio.label}}</label>
+				{{form.Oficio}}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Sasca.name}}">{{form.Sasca.label}}</label>
+				{{form.Sasca}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Imagen_salida.name}}">{{form.Imagen_salida.label}}</label>
+				{{form.Imagen_salida}}
+			</div>
+		</div>
+
+    </div>
+    <div align="center">
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Guardar</button>
+                <h5> Agregar/Modificar una salida de Indicio Definitiva </h5>
+			</div>
+		</div>
+    </div>
+</form>
+
+
+{% endblock %}

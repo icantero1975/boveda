@@ -1,0 +1,65 @@
+in{% extends "base.html" %}
+
+{% block content %}
+
+    <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre de la Autoridad</th>
+                    <th class="text-center">Cargo</th>
+                    <th class="text-center">Adscripción</th>
+                    <th class="text-center">Acciones</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+            {% if object_list  %}
+                {% for autori in object_list %}
+                <tr>
+                    <td>{{ autori.id }}</td>
+                    <td>{{ autori.Nombre }} </td>
+                    <td>{{ autori.Cargo }}</td>
+                    <td>{{ autori.Adscripcion}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'autoridad_editar' autori.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'autoridad_eliminar' autori.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No hay registros de Autoridades Responsables</h1>
+            {% endif %}
+
+            </tbody>
+    </table>
+
+    <nav>
+    {% if is_paginated %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+
+            {% for i in paginator.page_range %}
+                <li {% if page_obj.number == i %} class="active" {% endif %}>
+                    <a href="?page={{i}}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    </nav>
+
+{% endblock %}
+
+{% block footer %}
+<div align="center">
+ <h5> Lista de Autoridades Responsables </h5>
+</div>
+
+{% endblock %}

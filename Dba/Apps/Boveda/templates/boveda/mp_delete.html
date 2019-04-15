@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+   <h3>¿Desea eliminar el registro de: {{ object.Nombre }}?</h3>
+    <div align="center">
+    <button class="btn btn-danger" type="submit">Si, eliminar</button>
+        <a class="btn btn-default" href="{% url 'autoridad_listar'%}">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
+
+{% block footer %}
+<div align="center">
+ <h5> Eliminar una autoridad responsable </h5>
+</div>
+
+{% endblock %}

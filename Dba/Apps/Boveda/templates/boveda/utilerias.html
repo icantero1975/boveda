@@ -1,0 +1,105 @@
+<div class="form-group">
+            <div class="row">
+                <div class="col-lg-9">
+                        <div class="col-lg-1">
+                            <a href="{% url 'reporte_indicios_excel' %}" class="btn btn-info btn-block">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{#}" class="btn btn-info btn-block">
+                                <span class="glyphicon glyphicon-file"></span>
+                            </a>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <IMG SRC="https://i9ekda.bl.files.1drv.com/y4m9nKMrsnS6A3rqMbp7z40zzjptcGeUq15oHw4BeTTwueV4clGjrZvfF98cd3qV-OYTOjHDBBadkhITXpmHun6LyKglEopFCGj9xh6bJOed1GAuap6n-VR5ehXgWqq6uGohDnpeyLlx7DFtG84ZMg5pcDMbRnQpumvhyJnQm0SoojGSIR3uNJ4hmn24TscTGz2-Gn3s_MvoUoTBa-IDL7O-w?width=415&height=4878&cropmode=none">
+    </div>
+
+
+                {% if user.is_authenticated %}
+                      Bienvenidooo {{user.username|capfirst}}
+                      <a href="/cerrar/">Salir</a>
+                {% else %}
+                    <form class="form-horizontal alinear" method="POST">{% csrf_token %}
+                      <div class="control-group">
+                        <label class="control-label" for="inputEmail" >Usuario</label>
+                        <div class="controls">
+                          <input name="username" type="text" id="inputEmail" placeholder="Usuario">
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="inputPassword">Contraseña</label>
+                        <div class="controls">
+                          <input name="password" type="password" id="inputPassword" placeholder="Contraseña">
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <div class="controls">
+                          <label class="checkbox">
+                          <input type="checkbox">Recordar</label>
+                          <button type="submit" class="btn btn-info">Ingresar</button>
+                          <a href="/registrarse/" class="reg">Registrarse</a>
+                        </div>
+                      </div>
+                    </form>
+                {% endif %}  
+
+
+
+
+                <div class="span5">
+                <div class="row-fluid">
+                  <div class="span2"></div>
+                  <div class="span8 registrar">
+                    <legend align="center">SISTEMA DE CONTROL DE INDICIOS</legend>
+                    {% if user.is_authenticated %}
+                      Bienvenido {{user.username|capfirst}}
+                      <a href="/menu/cerrar/">Salir</a>
+                      <div align="center">
+                        <h1> Dirección de Bienes Asegurados</h1>
+                        <h5> Bóveda de Indicios </h5>
+
+                        <IMG SRC="https://i9ekda.bl.files.1drv.com/y4m9nKMrsnS6A3rqMbp7z40zzjptcGeUq15oHw4BeTTwueV4clGjrZvfF98cd3qV-OYTOjHDBBadkhITXpmHun6LyKglEopFCGj9xh6bJOed1GAuap6n-VR5ehXgWqq6uGohDnpeyLlx7DFtG84ZMg5pcDMbRnQpumvhyJnQm0SoojGSIR3uNJ4hmn24TscTGz2-Gn3s_MvoUoTBa-IDL7O-w?width=415&height=4878&cropmode=none">
+                    </div>
+
+                    {% else %}
+                    <form class="form-horizontal alinear" method="POST">
+                        {% csrf_token %}
+                      <div class="control-group">
+                        <label class="control-label" for="inputEmail" >Usuario</label>
+                        <div class="controls">
+                          <input name="username" type="text" id="inputEmail" placeholder="Usuario">
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="inputPassword">Contraseña</label>
+                        <div class="controls">
+                          <input name="password" type="password" id="inputPassword" placeholder="Contraseña">
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <div class="controls">
+                          <label class="checkbox">
+                          <input type="checkbox">Recordar</label>
+                          <button type="submit" class="btn btn-info">Ingresar</button>
+                          <a href="/registrarse/" class="reg">Registrarse</a>
+                        </div>
+                      </div>
+                    </form>
+                    {% endif %}  
+                  </div>  
+                  <div class="span2"></div>
+                </div>
+            </div>
+
+            <a href="{#}">Olvidé mi contraseña</a>

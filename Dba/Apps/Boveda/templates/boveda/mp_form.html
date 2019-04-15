@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+
+{% endblock}
+
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Nombre.name}}">{{form.Nombre.label}}</label>
+				{{form.Nombre}}
+			</div>
+		</div>
+       <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Cargo.name}}">{{form.Cargo.label}}</label>
+				{{form.Cargo}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Adscripcion.name}}">{{form.Adscripcion.label}}</label>
+				{{form.Adscripcion}}
+			</div>
+		</div>
+
+
+    </div>
+    <div align="center">
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Guardar</button>
+                <h5> Agregar/Modificar una autoridad responsable </h5>
+			</div>
+		</div>
+    </div>
+</form>
+{% endblock %}
+
+
+

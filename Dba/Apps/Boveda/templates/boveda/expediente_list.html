@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text center">No.Ingreso</th>
+                    <th class="text-center">Cantidad de Indicios</th>
+                    <th class="text-center">Lugar de Resguardo</th>
+                    <th class="text-center">Carpeta o Expediente de Investigación</th>
+                    <th class="text-center">Autoridad</th>
+                    <th class="text-center">Fecha de Ingreso</th>
+                    <th class="text-center">Hora de Ingreso</th>
+                    <th class="text-center">Oficio No.</th>
+                    <th>Acciones</th>
+                </tr>
+
+            </thead>
+            <tbody>
+            {% if object_list  %}
+                {% for expediente in object_list %}
+                <tr>
+                    <td>{{ expediente.Num_Ingreso }}</td>
+                    <td>{{ expediente.Cantidad_de_Indicios }} </td>
+                    {% if expediente.Resguardo_en == 'B' %}
+                    <td>Boveda</td>
+                    {% else %}
+                    <td>Bodega de Bienes Asegurados</td>
+                    {% endif %}
+                    <td>{{ expediente.Carpeta_Investigacion}}</td>
+                    <td>{{ expediente.Titular}}</td>
+                    <td>{{ expediente.Fecha_Ingreso}}</td>
+                    <td>{{ expediente.Hora_Ingreso}}</td>
+                    <td>{{ expediente.Oficio}}</td>
+
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'expediente_editar' expediente.Num_Ingreso %}">Editar</a>
+                        <a class="btn btn-info" href="{% url 'mis_indicios' expediente.Num_Ingreso %}">Ver Indicios</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No hay Carpetas o Expedientes</h1>
+            {% endif %}
+
+            </tbody>
+    </table>
+
+    <nav>
+    {% if is_paginated %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+
+            {% for i in paginator.page_range %}
+                <li {% if page_obj.number == i %} class="active" {% endif %}>
+                    <a href="?page={{i}}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    </nav>
+
+
+{% endblock %}
+
+{% block footer %}
+<div align="center">
+ <h5> Lista de Expedientes </h5>
+</div>
+
+{% endblock %}

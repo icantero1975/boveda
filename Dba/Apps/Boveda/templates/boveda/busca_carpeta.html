@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<title>BUSCAR POR RUE</title>
+<h3>Busquedas por Rue</h3>
+
+<BODY>
+	{% if error %}
+		<p style="color: red;"> No hay resultado de busqueda... intenta otra vez</p>
+	{% endif %}
+	<form action= "/menu/buscar/" method="get">
+		<input type="text" name="q">
+		<input type="submit" value="Buscar">
+	</form>
+</BODY>
+
+{% endblock %}

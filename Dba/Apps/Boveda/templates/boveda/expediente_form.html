@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Cantidad_de_Indicios.name}}">{{form.Cantidad_de_Indicios.label}}</label>
+				{{form.Cantidad_de_Indicios}}
+			</div>
+		</div>
+       <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Resguardo_en.name}}">{{form.Resguardo_en.label}}</label>
+				{{form.Resguardo_en}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Carpeta_Investigacion.name}}">{{form.Carpeta_Investigacion.label}}</label>
+				{{form.Carpeta_Investigacion}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Titular.name}}">{{form.Titular.label}}</label>
+				{{form.Titular}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Fecha_Ingreso.name}}">{{form.Fecha_Ingreso.label}}</label>
+				{{form.Fecha_Ingreso}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Hora_Ingreso.name}}">{{form.Hora_Ingreso.label}}</label>
+				{{form.Hora_Ingreso}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Oficio.name}}">{{form.Oficio.label}}</label>
+				{{form.Oficio}}
+			</div>
+		</div>
+    </div>
+    <div align="center">
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Guardar</button>
+                <h5> Agregar/Modificar un Expediente </h5>
+			</div>
+		</div>
+    </div>
+    </form>
+
+{% endblock %}

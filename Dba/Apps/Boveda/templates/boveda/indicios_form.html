@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Ingreso_Num.name}}">{{form.Ingreso_Num.label}}</label>
+				{{form.Ingreso_Num}}
+			</div>
+		</div>
+       <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.No_Indicio.name}}">{{form.No_Indicio.label}}</label>
+				{{form.No_Indicio}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Tipo.name}}">{{form.Tipo.label}}</label>
+				{{form.Tipo}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Descripcion.name}}">{{form.Descripcion.label}}</label>
+				{{form.Descripcion}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Rue.name}}">{{form.Rue.label}}</label>
+				{{form.Rue}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Clasificacion.name}}">{{form.Clasificacion.label}}</label>
+				{{form.Clasificacion}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+                
+				<label for="{{form.Fecha_Caducidad.name}}">{{form.Fecha_Caducidad.label}}</label>
+                {{form.Fecha_Caducidad }}
+                
+
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Peso_Narcotico.name}}">{{form.Peso_Narcotico.label}}</label>
+				{{form.Peso_Narcotico}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Dictamen.name}}">{{form.Dictamen.label}}</label>
+				{{form.Dictamen}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Deposito_Banco.name}}">{{form.Deposito_Banco.label}}</label>
+				{{form.Deposito_Banco}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Cantidad.name}}">{{form.Cantidad.label}}</label>
+				{{form.Cantidad}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Persona_Entrega.name}}">{{form.Persona_Entrega.label}}</label>
+				{{form.Persona_Entrega}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Cadena.name}}">{{form.Cadena.label}}</label>
+				{{form.Cadena}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Embalaje.name}}">{{form.Embalaje.label}}</label>
+				{{form.Embalaje}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Estado_embalaje.name}}">{{form.Estado_embalaje.label}}</label>
+				{{form.Estado_embalaje}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Ubicacion.name}}">{{form.Ubicacion.label}}</label>
+				{{form.Ubicacion}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Imagen.name}}">{{form.Imagen.label}}</label>
+				{{form.Imagen}}
+			</div>
+		</div>
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{form.Observaciones.name}}">{{form.Observaciones.label}}</label>
+				{{form.Observaciones}}
+			</div>
+		</div>
+    </div>
+    <div align="center">
+        <div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Guardar</button>
+                <h5> Agregar Indicios </h5>
+			</div>
+		</div>
+    </div>
+    </form>
+
+{% endblock %}

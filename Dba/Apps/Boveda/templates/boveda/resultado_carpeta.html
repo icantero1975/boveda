@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+Indicios por Descripción
+
+{% endblock %}
+
+{% block content %}
+
+<body>
+	
+	
+	<table class="table table-bordered">
+            <thead>
+                <tr>
+                	<th class="text-center">RUE</th>
+                    <th class="text-center">CARPETA</th>
+                    <th class="text-center">DESCRIPCION</th>
+                    <th class="text-center">ACCION</th>
+                 </tr>
+
+            </thead>
+            <tbody>
+            {% if indicios  %}
+
+           	 <p> Tu busqueda para los Rues que contienen: <strong> {{ query }}</strong></p>
+				<p>Se encontraron: {{indicios|length }} indicios{{indicios|pluralize}}.</p>
+                {% for indicio in indicios %}
+                <tr>
+                    <td>{{ indicio.Rue }}</td>
+                    <td>{{ indicio.Ingreso_Num}}</td>
+                    <td>{{ indicio.Descripcion}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'indicio_editar' indicio.id %}">Editar</a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No hay Resultados posibles con ese criterio</h1>
+            {% endif %}
+
+            </tbody>
+    </table>
+
+</body>
+
+
+{% endblock %}

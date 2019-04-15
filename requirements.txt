@@ -1,0 +1,8 @@
+Django==2.1.7
+et-xmlfile==1.0.1
+jdcal==1.4
+openpyxl==2.6.2
+Pillow==5.4.1
+pytz==2018.9
+reportlab==3.5.17
+XlsxWriter==1.1.5

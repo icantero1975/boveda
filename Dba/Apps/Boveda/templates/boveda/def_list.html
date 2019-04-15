@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 align="center">SALIDAS DEFINITIVAS</h3>
+
+<form action="{% url 'reporte_definitiva_excel' %}" method="get">
+    
+        <div class="row">
+            <div class="col-xs-3">
+            <input type="number" name="campo" placeholder="Ingrese el Id de la Carpeta" min="1" required="required">
+            <button type="submit">ENVIAR A EXCEL</button>
+            </div>
+        </div>
+
+        
+            
+    
+</form>
+
+     <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Rue del Indicio</th>
+                    <th class="text-center">Carpeta</th>
+                    <th class="text-center">Titular Responsable</th>
+                    <th class="text-center">Link Imagen</th>
+                    <th class="text-center">Sasca</th>
+                    <th class="text-center">Acciones</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+            {% if object_list  %}
+                {% for salida in object_list %}
+                <tr>
+                    <td>{{ salida.id }}</td>
+                    <td>{{ salida.Rue }}</td>
+                    <td>{{salida.Carpeta}}
+                    <td>{{ salida.Autoridad }}</td>
+                    <td>{{ salida.Imagen_salida}}</td>
+                    <td>{{ salida.Sasca}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'def_editar' salida.id %}">Editar</a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No hay registros de Salidas de Indicios Definitivos</h1>
+            {% endif %}
+
+            </tbody>
+    </table>
+
+    <nav>
+    {% if is_paginated %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+
+            {% for i in paginator.page_range %}
+                <li {% if page_obj.number == i %} class="active" {% endif %}>
+                    <a href="?page={{i}}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    </nav>
+
+
+
+{% endblock %}
+
+{% block footer %}
+<div align="center">
+ <h5> Salida de Indicios Definitivos</h5>
+</div>
+
+{% endblock %}
